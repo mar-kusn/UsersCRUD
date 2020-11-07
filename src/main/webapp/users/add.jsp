@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: mariusz
   Date: 07.11.2020
-  Time: 10:02
+  Time: 13:33
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -24,31 +24,24 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Lista użytkowników</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Dodaj użytkownika</h6>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nazwa użytkownika</th>
-                        <th>Email</th>
-                        <th>Akcja</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${users}" var="user">
-                        <tr>
-                            <td>${user.id}</td>
-                            <td><p>${user.userName}</td>
-                            <td><p>${user.email}</td>
-                            <td><p>Usuń Edit Pokaż</td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
-            </div>
+            <form method="post">
+                <div class="form-group">
+                    <label for="username">Nazwa</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Nazwa użytkownika">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email użytkownika">
+                </div>
+                <div class="form-group">
+                    <label for="password">Hasło</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Hasło użytkownika">
+                </div>
+                <button type="submit" class="btn btn-primary">Zapisz</button>
+            </form>
         </div>
 
 
