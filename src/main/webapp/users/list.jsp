@@ -43,7 +43,11 @@
                             <td>${user.id}</td>
                             <td><p>${user.userName}</td>
                             <td><p>${user.email}</td>
-                            <td><p>Usuń Edit Pokaż</td>
+                            <td>
+                                <a href="<c:url value="/users/delete"/>">Usuń</a>
+                                <a href="<c:url value="/users/edit?id=${user.id}"/>">Edytuj</a>
+                                <a href="<c:url value="/users/show"/>">Pokaż</a>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>

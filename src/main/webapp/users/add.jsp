@@ -30,7 +30,7 @@
             <form method="post">
                 <div class="form-group">
                     <label for="username">Nazwa</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Nazwa użytkownika">
+                    <input type="text" class="form-control" id="username" name="userName" placeholder="Nazwa użytkownika">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
