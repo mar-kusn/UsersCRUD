@@ -44,9 +44,9 @@
                             <td><p>${user.userName}</td>
                             <td><p>${user.email}</td>
                             <td>
-                                <a href="<c:url value="/users/delete"/>">Usuń</a>
+                                <a href="<c:url value="/users/delete?id=${user.id}"/>">Usuń</a>
                                 <a href="<c:url value="/users/edit?id=${user.id}"/>">Edytuj</a>
-                                <a href="<c:url value="/users/show"/>">Pokaż</a>
+                                <a href="<c:url value="/users/show?id=${user.id}"/>">Pokaż</a>
                             </td>
                         </tr>
                     </c:forEach>
