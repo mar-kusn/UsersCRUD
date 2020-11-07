@@ -47,7 +47,7 @@ public class UserEdit extends HttpServlet {
             userDao.update(editUser);
             response.sendRedirect("/users/list");
         } else {
-            writer.append("Podaj wszystkie wymagane dane!");
+            response.sendRedirect("/users/error.jsp");
         }
     }
 

@@ -39,7 +39,7 @@ public class UserAdd extends HttpServlet {
                 response.sendRedirect("/users/list");
             }
         } else {
-            writer.append("Podaj wszystkie wymagane dane!");
+            response.sendRedirect("/users/error.jsp");
         }
     }
 
