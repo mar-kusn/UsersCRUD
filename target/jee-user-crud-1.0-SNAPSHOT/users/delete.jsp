@@ -26,7 +26,6 @@
             <h6 class="m-0 font-weight-bold text-primary">Usuwanie użytkownika</h6>
         </div>
         <div class="card-body">
-            Czy na pewno chcesz usunąć użytkownika:
             <form method="post">
                 <div class="table-responsive">
                     <table class="table">
@@ -46,6 +45,7 @@
                         </tbody>
                     </table>
                 </div>
+                Czy na pewno chcesz usunąć użytkownika:
                 <button type="submit" name="action" value="delete" class="btn btn-primary">Usuń</button>
                 <button type="submit" name="action" value="cancel" class="btn btn-primary">Anuluj</button>
             </form>

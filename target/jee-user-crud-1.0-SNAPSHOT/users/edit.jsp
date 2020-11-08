@@ -25,11 +25,10 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Edycja użytkownika</h6>
-            <div class="text-xs font-weight-bold text-success text-uppercase mb-1"></div>
             <c:if test="${not empty param.errorMsg}">
-                <div class="card mb-4 py-3 border-bottom-danger">
-                    <div class="card-body">
-                        Błąd! ${errorMsg}
+                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                    <div class="card mb-4 py-3 border-bottom-danger">
+                        <div class="card-body"> ${errorMsg} </div>
                     </div>
                 </div>
             </c:if>

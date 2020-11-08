@@ -39,6 +39,8 @@ public class UserAdd extends HttpServlet {
             if (newUser != null) {
                 System.out.println("new user: " + newUser);
                 response.sendRedirect(request.getContextPath() + "/users/list");
+            } else {
+                response.sendRedirect(request.getContextPath() + "?errorMsg=\"Problem podczas dodawania użytkownika! Popraw dane!\"");
             }
         } else {
             response.sendRedirect(request.getContextPath() + "?errorMsg=\"Podaj wszystkie wymagane dane!\"");
