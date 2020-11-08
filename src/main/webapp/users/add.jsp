@@ -20,31 +20,31 @@
                 class="fas fa-download fa-sm text-white-50"></i> Dodaj użytkownika</a>
     </div>
 
-
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Dodaj użytkownika</h6>
+            <c:if test="${not empty param.errorMsg}">${errorMsg}</c:if>
         </div>
         <div class="card-body">
             <form method="post">
                 <div class="form-group">
                     <label for="username">Nazwa</label>
-                    <input type="text" class="form-control" id="username" name="userName" placeholder="Nazwa użytkownika">
+                    <input type="text" class="form-control" id="username" name="userName"
+                           placeholder="Nazwa użytkownika">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Email użytkownika">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email użytkownika">
                 </div>
                 <div class="form-group">
                     <label for="password">Hasło</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Hasło użytkownika">
+                    <input type="password" class="form-control" id="password" name="password"
+                           placeholder="Hasło użytkownika">
                 </div>
                 <button type="submit" class="btn btn-primary">Zapisz</button>
             </form>
         </div>
-
-
     </div>
     <!-- /.container-fluid -->
 

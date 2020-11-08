@@ -2,7 +2,7 @@ package pl.coderslab;
 
 public class User {
     private int id;             // 0 gdy nie został zapisany w DB (w DB primary key ma wartość 1...)
-                                // lub wartość klucza głównego odczytanego wiersza
+    // lub wartość klucza głównego odczytanego wiersza
     private String email;
     private String userName;
     private String password;
@@ -54,7 +54,7 @@ public class User {
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", userName='" + userName + '\'' +
-        //        ", password='" + password + '\'' +
+                //        ", password='" + password + '\'' +
                 '}';
     }
 }

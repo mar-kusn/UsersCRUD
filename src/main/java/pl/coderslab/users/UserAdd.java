@@ -16,8 +16,13 @@ public class UserAdd extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String errorMsg = request.getParameter("errorMsg");
+        if (!isEmpty(errorMsg)) {
+            request.setAttribute("errorMsg", errorMsg);
+        }
         getServletContext().getRequestDispatcher("/users/add.jsp")
                 .forward(request, response);
+
     }
 
     @Override
@@ -27,19 +32,16 @@ public class UserAdd extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        PrintWriter writer = response.getWriter();
-        writer.append("Dodawanie użytkownika! ");
-
         if (!isEmpty(userName) && !isEmpty(email) && !isEmpty(password)) {
             UserDao userDao = new UserDao();
             User newUser = userDao.create(new User(email, userName, password));
 
-            System.out.println(newUser);
             if (newUser != null) {
-                response.sendRedirect("/users/list");
+                System.out.println("new user: " + newUser);
+                response.sendRedirect(request.getContextPath() + "/users/list");
             }
         } else {
-            response.sendRedirect("/users/error.jsp");
+            response.sendRedirect(request.getContextPath() + "?errorMsg=\"Podaj wszystkie wymagane dane!\"");
         }
     }
 

@@ -31,15 +31,15 @@
                 <table class="table">
                     <tbody>
                     <tr>
-                        <th>ID</th>
+                        <th scope="row">ID</th>
                         <td>${user.id}</td>
                     </tr>
                     <tr>
-                        <th>Nazwa użytkownika</th>
+                        <th scope="row">Nazwa użytkownika</th>
                         <td><p>${user.userName}</td>
                     </tr>
                     <tr>
-                        <th>Email</th>
+                        <th scope="row">Email</th>
                         <td>${user.email}</td>
                     </tr>
                     </tbody>

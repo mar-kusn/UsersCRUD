@@ -20,7 +20,6 @@
                 class="fas fa-download fa-sm text-white-50"></i> Dodaj użytkownika</a>
     </div>
 
-
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -47,12 +46,10 @@
                         </tbody>
                     </table>
                 </div>
-                <button type="submit" class="btn btn-primary">Usuń</button>
-                <a href="/users/list" class="btn btn-primary"> Anuluj</a>
+                <button type="submit" name="action" value="delete" class="btn btn-primary">Usuń</button>
+                <button type="submit" name="action" value="cancel" class="btn btn-primary">Anuluj</button>
             </form>
         </div>
-
-
     </div>
     <!-- /.container-fluid -->
 

@@ -17,11 +17,20 @@ public class UserShow extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String id = request.getParameter("id");
-        UserDao userDao = new UserDao();
-        User readUser = userDao.read(Integer.parseInt(id));
-        request.setAttribute("user", readUser);
 
-        getServletContext().getRequestDispatcher("/users/show.jsp")
-                .forward(request, response);
+        if (!isEmpty(id)) {
+            UserDao userDao = new UserDao();
+            User readUser = userDao.read(Integer.parseInt(id));
+            request.setAttribute("user", readUser);
+
+            getServletContext().getRequestDispatcher("/users/show.jsp")
+                    .forward(request, response);
+        } else {
+            response.sendRedirect("/users/list");
+        }
+    }
+
+    private boolean isEmpty(String text) {
+        return text == null || "".equals(text);
     }
 }

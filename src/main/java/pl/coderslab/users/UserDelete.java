@@ -17,21 +17,36 @@ public class UserDelete extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String id = request.getParameter("id");
-        UserDao userDao = new UserDao();
-        User delUser = userDao.read(Integer.parseInt(id));
-        request.setAttribute("id", id);
-        request.setAttribute("user", delUser);
 
-        getServletContext().getRequestDispatcher("/users/delete.jsp")
-                .forward(request, response);
+        if (!isEmpty(id)) {
+            UserDao userDao = new UserDao();
+            User delUser = userDao.read(Integer.parseInt(id));
+            request.setAttribute("id", id);
+            request.setAttribute("user", delUser);
+
+            getServletContext().getRequestDispatcher("/users/delete.jsp")
+                    .forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/users/list");
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String id = request.getParameter("id");
-        UserDao userDao = new UserDao();
-        userDao.delete(Integer.parseInt(id));
-        response.sendRedirect("/users/list");
+        String action = request.getParameter("action");
+        if (!isEmpty(id) && !isEmpty(action)) {
+            if ("delete".equals(action)) {
+                UserDao userDao = new UserDao();
+                userDao.delete(Integer.parseInt(id));
+                System.out.println("deleted user id: " + id);
+            }
+        }
+        response.sendRedirect(request.getContextPath() + "/users/list");
+    }
+
+    private boolean isEmpty(String text) {
+        return text == null || "".equals(text);
     }
 }

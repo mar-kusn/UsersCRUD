@@ -25,26 +25,36 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Edycja użytkownika</h6>
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1"></div>
+            <c:if test="${not empty param.errorMsg}">
+                <div class="card mb-4 py-3 border-bottom-danger">
+                    <div class="card-body">
+                        Błąd! ${errorMsg}
+                    </div>
+                </div>
+            </c:if>
         </div>
         <div class="card-body">
             <form method="post">
                 <div class="form-group">
                     <label for="username">Nazwa</label>
-                    <input value="${user.userName}" type="text" class="form-control" id="username" name="userName" placeholder="Nazwa użytkownika">
+                    <input value="${user.userName}" type="text" class="form-control" id="username" name="userName"
+                           placeholder="Nazwa użytkownika">
+                    <input type="hidden" name="id" value="${user.id}"/>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input value="${user.email}" type="text" class="form-control" id="email" name="email" placeholder="Email użytkownika">
+                    <input value="${user.email}" type="email" class="form-control" id="email" name="email"
+                           placeholder="Email użytkownika">
                 </div>
                 <div class="form-group">
                     <label for="password">Hasło</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Hasło użytkownika">
+                    <input type="password" class="form-control" id="password" name="password"
+                           placeholder="Hasło użytkownika">
                 </div>
                 <button type="submit" class="btn btn-primary">Zapisz</button>
             </form>
         </div>
-
-
     </div>
     <!-- /.container-fluid -->
 

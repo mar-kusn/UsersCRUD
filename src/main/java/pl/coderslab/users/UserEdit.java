@@ -17,12 +17,21 @@ public class UserEdit extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String id = request.getParameter("id");
-        UserDao userDao = new UserDao();
-        User readUser = userDao.read(Integer.parseInt(id));
-        request.setAttribute("user", readUser);
+        String errorMsg = request.getParameter("errorMsg");
 
-        getServletContext().getRequestDispatcher("/users/edit.jsp")
-                .forward(request, response);
+        if (!isEmpty(errorMsg)) {
+            request.setAttribute("errorMsg", errorMsg);
+        }
+        if (!isEmpty(id)) {
+            UserDao userDao = new UserDao();
+            User readUser = userDao.read(Integer.parseInt(id));
+            request.setAttribute("user", readUser);
+
+            getServletContext().getRequestDispatcher("/users/edit.jsp")
+                    .forward(request, response);
+        } else {
+            response.sendRedirect("/users/list");
+        }
     }
 
     @Override
@@ -38,16 +47,18 @@ public class UserEdit extends HttpServlet {
 
         if (!isEmpty(userName) && !isEmpty(email) && !isEmpty(password)) {
             UserDao userDao = new UserDao();
-            User editUser = userDao.read(Integer.parseInt(id));
+            User editUser = new User();
 
+            editUser.setId(Integer.parseInt(id));
             editUser.setUserName(userName);
             editUser.setEmail(email);
             editUser.setPassword(password);
 
             userDao.update(editUser);
-            response.sendRedirect("/users/list");
+            System.out.println("edit user [" + id + "], new values: " + editUser);
+            response.sendRedirect(request.getContextPath() + "/users/list");
         } else {
-            response.sendRedirect("/users/error.jsp");
+            response.sendRedirect(request.getContextPath() + "/users/edit?id=" + id + "&errorMsg=\"Podaj wszystkie wymagane dane!\"");
         }
     }
 

@@ -31,10 +31,10 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nazwa użytkownika</th>
-                        <th>Email</th>
-                        <th>Akcja</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nazwa użytkownika</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Akcja</th>
                     </tr>
                     </thead>
                     <tbody>

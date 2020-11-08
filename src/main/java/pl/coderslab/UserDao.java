@@ -2,8 +2,6 @@ package pl.coderslab;
 
 import org.mindrot.jbcrypt.BCrypt;
 import pl.coderslab.utils.DbUtil;
-import pl.coderslab.User;
-
 import java.sql.*;
 import java.util.Arrays;
 
@@ -128,7 +126,6 @@ public class UserDao {
             e.printStackTrace();
             return null;
         }
-
     }
 
     private User[] addToArray(User u, User[] users) {
