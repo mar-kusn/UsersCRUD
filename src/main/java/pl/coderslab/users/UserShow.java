@@ -1,7 +1,8 @@
 package pl.coderslab.users;
 
-import pl.coderslab.User;
-import pl.coderslab.UserDao;
+import pl.coderslab.entity.User;
+import pl.coderslab.entity.UserDao;
+import static pl.coderslab.utils.Util.isEmpty;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/users/show")
 public class UserShow extends HttpServlet {
@@ -28,9 +28,5 @@ public class UserShow extends HttpServlet {
         } else {
             response.sendRedirect("/users/list");
         }
-    }
-
-    private boolean isEmpty(String text) {
-        return text == null || "".equals(text);
     }
 }

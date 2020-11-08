@@ -24,7 +24,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Dodaj użytkownika</h6>
-            <c:if test="${not empty param.errorMsg}">
+            <c:if test="${not empty errorMsg}">
                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                     <div class="card mb-4 py-3 border-bottom-danger">
                         <div class="card-body"> ${errorMsg} </div>
@@ -35,8 +35,8 @@
         <div class="card-body">
             <form method="post">
                 <div class="form-group">
-                    <label for="username">Nazwa</label>
-                    <input type="text" class="form-control" id="username" name="userName"
+                    <label for="userName">Nazwa</label>
+                    <input type="text" class="form-control" id="userName" name="userName"
                            placeholder="Nazwa użytkownika">
                 </div>
                 <div class="form-group">

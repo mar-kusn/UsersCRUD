@@ -16,7 +16,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">UsersCRUD</h1>
-        <a href="/users/edit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+        <a href="/users/add" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Dodaj użytkownika</a>
     </div>
 
@@ -25,7 +25,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Edycja użytkownika</h6>
-            <c:if test="${not empty param.errorMsg}">
+            <c:if test="${not empty errorMsg}">
                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                     <div class="card mb-4 py-3 border-bottom-danger">
                         <div class="card-body"> ${errorMsg} </div>
@@ -36,8 +36,8 @@
         <div class="card-body">
             <form method="post">
                 <div class="form-group">
-                    <label for="username">Nazwa</label>
-                    <input value="${user.userName}" type="text" class="form-control" id="username" name="userName"
+                    <label for="userName">Nazwa</label>
+                    <input value="${user.userName}" type="text" class="form-control" id="userName" name="userName"
                            placeholder="Nazwa użytkownika">
                     <input type="hidden" name="id" value="${user.id}"/>
                 </div>

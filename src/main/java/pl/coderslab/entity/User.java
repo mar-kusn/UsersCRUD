@@ -1,4 +1,4 @@
-package pl.coderslab;
+package pl.coderslab.entity;
 
 public class User {
     private int id;             // 0 gdy nie został zapisany w DB (w DB primary key ma wartość 1...)

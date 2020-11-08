@@ -1,4 +1,4 @@
-package pl.coderslab;
+package pl.coderslab.entity;
 
 import org.mindrot.jbcrypt.BCrypt;
 import pl.coderslab.utils.DbUtil;
@@ -79,7 +79,7 @@ public class UserDao {
     }
 
     // edycja danych użytkownika
-    public void update(User user) {
+    public int update(User user) {
         try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement statement =
                     conn.prepareStatement(UPDATE_USER_QUERY);
@@ -87,9 +87,13 @@ public class UserDao {
             statement.setString(2, user.getUserName());
             statement.setString(3, hashPassword(user.getPassword()));
             statement.setInt(4, user.getId());
-            statement.executeUpdate();
+            return statement.executeUpdate();
+        } catch (SQLIntegrityConstraintViolationException sqli) {
+            System.out.println(sqli.getMessage());
+            return -1;
         } catch (SQLException e) {
             e.printStackTrace();
+            return -1;
         }
     }
 

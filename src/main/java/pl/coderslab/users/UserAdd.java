@@ -1,7 +1,8 @@
 package pl.coderslab.users;
 
-import pl.coderslab.User;
-import pl.coderslab.UserDao;
+import pl.coderslab.entity.User;
+import pl.coderslab.entity.UserDao;
+import static pl.coderslab.utils.Util.isEmpty;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 
 @WebServlet("/users/add")
 public class UserAdd extends HttpServlet {
@@ -40,14 +43,12 @@ public class UserAdd extends HttpServlet {
                 System.out.println("new user: " + newUser);
                 response.sendRedirect(request.getContextPath() + "/users/list");
             } else {
-                response.sendRedirect(request.getContextPath() + "?errorMsg=\"Problem podczas dodawania użytkownika! Popraw dane!\"");
+                String errorMsg = "Problem podczas dodawania użytkownika! Popraw dane!";
+                response.sendRedirect(request.getContextPath() + "?errorMsg=" + URLEncoder.encode(errorMsg, StandardCharsets.UTF_8));
             }
         } else {
-            response.sendRedirect(request.getContextPath() + "?errorMsg=\"Podaj wszystkie wymagane dane!\"");
+            String errorMsg = "Podaj wszystkie wymagane dane!";
+            response.sendRedirect(request.getContextPath() + "?errorMsg=" + URLEncoder.encode(errorMsg, StandardCharsets.UTF_8));
         }
-    }
-
-    private boolean isEmpty(String text) {
-        return text == null || "".equals(text);
     }
 }

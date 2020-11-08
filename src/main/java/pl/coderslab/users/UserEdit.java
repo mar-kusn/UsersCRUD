@@ -1,7 +1,8 @@
 package pl.coderslab.users;
 
-import pl.coderslab.User;
-import pl.coderslab.UserDao;
+import pl.coderslab.entity.User;
+import pl.coderslab.entity.UserDao;
+import static pl.coderslab.utils.Util.isEmpty;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 
 @WebServlet("/users/edit")
 public class UserEdit extends HttpServlet {
@@ -54,15 +58,20 @@ public class UserEdit extends HttpServlet {
             editUser.setEmail(email);
             editUser.setPassword(password);
 
-            userDao.update(editUser);
-            System.out.println("edit user [" + id + "], new values: " + editUser);
-            response.sendRedirect(request.getContextPath() + "/users/list");
-        } else {
-            response.sendRedirect(request.getContextPath() + "/users/edit?id=" + id + "&errorMsg=\"Podaj wszystkie wymagane dane!\"");
-        }
-    }
+            int count = userDao.update(editUser);
 
-    private boolean isEmpty(String text) {
-        return text == null || "".equals(text);
+            if (count > 0) {
+                System.out.println("edit user [" + id + "], new values: " + editUser);
+                response.sendRedirect(request.getContextPath() + "/users/list");
+            } else {
+                String errorMsg = "Problem podczas edycji użytkownika! Popraw dane!";
+                response.sendRedirect(request.getContextPath() + "/users/edit?id=" + id
+                                + "&errorMsg=" + URLEncoder.encode(errorMsg, StandardCharsets.UTF_8));
+            }
+        } else {
+            String errorMsg = "Podaj wszystkie wymagane dane!";
+            response.sendRedirect(request.getContextPath() + "/users/edit?id=" + id
+                                + "&errorMsg=" + URLEncoder.encode(errorMsg, StandardCharsets.UTF_8));
+        }
     }
 }

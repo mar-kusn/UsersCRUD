@@ -1,7 +1,8 @@
 package pl.coderslab.users;
 
-import pl.coderslab.User;
-import pl.coderslab.UserDao;
+import pl.coderslab.entity.User;
+import pl.coderslab.entity.UserDao;
+import static pl.coderslab.utils.Util.isEmpty;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/users/delete")
 public class UserDelete extends HttpServlet {
@@ -44,9 +44,5 @@ public class UserDelete extends HttpServlet {
             }
         }
         response.sendRedirect(request.getContextPath() + "/users/list");
-    }
-
-    private boolean isEmpty(String text) {
-        return text == null || "".equals(text);
     }
 }
