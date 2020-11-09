@@ -14,7 +14,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 
-@WebServlet("/users/add")
+@WebServlet("/user/add")
 public class UserAdd extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,7 +41,7 @@ public class UserAdd extends HttpServlet {
 
             if (newUser != null) {
                 System.out.println("new user: " + newUser);
-                response.sendRedirect(request.getContextPath() + "/users/list");
+                response.sendRedirect(request.getContextPath() + "/user/list");
             } else {
                 String errorMsg = "Problem podczas dodawania użytkownika! Popraw dane!";
                 response.sendRedirect(request.getContextPath() + "?errorMsg=" + URLEncoder.encode(errorMsg, StandardCharsets.UTF_8));

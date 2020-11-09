@@ -15,7 +15,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 
-@WebServlet("/users/edit")
+@WebServlet("/user/edit")
 public class UserEdit extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +34,7 @@ public class UserEdit extends HttpServlet {
             getServletContext().getRequestDispatcher("/users/edit.jsp")
                     .forward(request, response);
         } else {
-            response.sendRedirect("/users/list");
+            response.sendRedirect("/user/list");
         }
     }
 
@@ -62,15 +62,15 @@ public class UserEdit extends HttpServlet {
 
             if (count > 0) {
                 System.out.println("edit user [" + id + "], new values: " + editUser);
-                response.sendRedirect(request.getContextPath() + "/users/list");
+                response.sendRedirect(request.getContextPath() + "/user/list");
             } else {
                 String errorMsg = "Problem podczas edycji użytkownika! Popraw dane!";
-                response.sendRedirect(request.getContextPath() + "/users/edit?id=" + id
+                response.sendRedirect(request.getContextPath() + "/user/edit?id=" + id
                                 + "&errorMsg=" + URLEncoder.encode(errorMsg, StandardCharsets.UTF_8));
             }
         } else {
             String errorMsg = "Podaj wszystkie wymagane dane!";
-            response.sendRedirect(request.getContextPath() + "/users/edit?id=" + id
+            response.sendRedirect(request.getContextPath() + "/user/edit?id=" + id
                                 + "&errorMsg=" + URLEncoder.encode(errorMsg, StandardCharsets.UTF_8));
         }
     }

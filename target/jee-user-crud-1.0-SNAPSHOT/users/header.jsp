@@ -27,7 +27,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value="/users/list"/>">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value="/user/list"/>">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -39,7 +39,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="<c:url value="/users/list"/>">
+            <a class="nav-link" href="<c:url value="/user/list"/>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Lista użytkowników</span></a>
         </li>

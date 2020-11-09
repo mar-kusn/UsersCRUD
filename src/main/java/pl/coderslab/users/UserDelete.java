@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/users/delete")
+@WebServlet("/user/delete")
 public class UserDelete extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,7 +27,7 @@ public class UserDelete extends HttpServlet {
             getServletContext().getRequestDispatcher("/users/delete.jsp")
                     .forward(request, response);
         } else {
-            response.sendRedirect(request.getContextPath() + "/users/list");
+            response.sendRedirect(request.getContextPath() + "/user/list");
         }
     }
 
@@ -43,6 +43,6 @@ public class UserDelete extends HttpServlet {
                 System.out.println("deleted user id: " + id);
             }
         }
-        response.sendRedirect(request.getContextPath() + "/users/list");
+        response.sendRedirect(request.getContextPath() + "/user/list");
     }
 }
